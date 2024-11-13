@@ -7,12 +7,12 @@
         public function getFabricas($Pais = false, $orderBy = false, $Direction = false){
             $sql = 'SELECT * FROM `fabrica`';
 
-            //TP3-WEB2/api/fabrica?pais=Alemania
+            //TPE3-WEB2/api/fabrica?pais=Alemania
             if($Pais){
                 $sql .= " WHERE `pais` = ?";
             }
 
-            //TP3-WEB2/api/fabrica?orderBy=cantidad
+            //TPE3-WEB2/api/fabrica?orderBy=cantidad
             if($orderBy){
                 switch($orderBy){
                     case 'id':
@@ -33,7 +33,7 @@
                 }
             }
 
-            //TP3-WEB2/api/fabrica?orderBy=cantidad&Direction=DESC
+            //TPE3-WEB2/api/fabrica?orderBy=cantidad&Direction=DESC
             if($Direction == 'DESC'){
                 $sql .= ' DESC';
             }
@@ -64,7 +64,7 @@
             return $fabrica;
         }
 
-        //TP3-WEB2/api/fabrica/:id
+        //TPE3-WEB2/api/fabrica/:id
         public function deleteFabrica($id){
             $sql = 'DELETE FROM fabrica WHERE id=?';
 

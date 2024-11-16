@@ -5,7 +5,7 @@ Integrantes:
 -Murrone Federico
 
 Descripcion:
-Esta API te permite consultar detalles sobre Fabricas y Modelos de zapatillas, ademas si un administrador este logueado podra ademas de ver podra hacer cambios y/o agregar una nueva Fabrica o Modelo.
+Esta API te permite consultar detalles sobre Fabricas y Modelos de zapatillas, ademas si un administrador este logueado podrá, ademas de ver, hacer cambios y/o agregar una nueva Fabrica o Modelo.
 
 URL EJEMPLO:
 ./api/endpoint/:ID/:subrecurso
@@ -14,13 +14,13 @@ ENDPOINTS:
 - GET /api/fabrica
 - GET /api/modelo
 
-    -Devuelve todos las fabricas o modelos disponibles en la db, esta se puede aplicar un filtro por pais en el caso de fabrica y por nombres en caso de modelo. Ademas pse puede ordenar por los diferentes campos.
+    -Devuelve todos las fabricas o modelos disponibles en la db, esta se puede aplicar un filtro por pais en el caso de fabrica y por nombres en caso de modelo. Ademas se puede ordenar por los diferentes campos.
   
 -Filtrado /api/fabrica?pais=Alemania.
 -Filtrado /api/modelo?nombre=Air Jordan.
 
   Ordenamiento fabrica:
-    orderBy: Este campo ordena los resultados de forma ascendente que es el por defecto.
+    orderBy: Este campo ordena los resultados de forma ascendente (por defecto).
     
       Las FABRICAS se pueden ordenar por cualquiera de sus campos:
       -id
@@ -36,7 +36,7 @@ ENDPOINTS:
   api/fabrica?orderBy=cantidad&Direction=DESC
 
   Ordenamiento modelo:
-    orderBy: Este campo ordena los resultados de forma ascendente que es el por defecto
+    orderBy: Este campo ordena los resultados de forma ascendente (por defecto).
     
       Las FABRICAS se pueden ordenar por cualquiera de sus campos:
       -id_zapatilla
@@ -80,7 +80,6 @@ ENDPOINTS:
   
   ejemplo:
   {
-    "id_zapatilla": 9,
     "id_fabrica": 1,
     "precio": 140,
     "nombre": "Air Jordan",
@@ -103,7 +102,6 @@ ENDPOINTS:
   
   ejemplo: 
   {
-    "id_zapatilla": 9,
     "id_fabrica": 1,
     "precio": 90,
     "nombre": "Air Jordan",
@@ -120,7 +118,7 @@ Autenticacion
   Para acceder a ciertos privilegios el usuario debe autenticarse utilizando un token.
   
     -GET api/usuarios/token
-      Este endpoin permite a los usuarios obtener un token JWT. Para utilizarlo, se deben enviar las credenciales en el encabezado de la solicitud en formato Base64
+      Este endpoin permite a los usuarios obtener un token JWT. Para utilizarlo, se deben enviar las credenciales en el encabezado de la solicitud en formato Base64.
       
         -iniciar sesion:
         Nombre de usuario: webadmin

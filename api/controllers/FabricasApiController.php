@@ -11,13 +11,13 @@
             $this->view = new JSONView();
         }
 
-        public function getAllFabricas($req, $res){
-            //Filtrado por pais
+        public function getAllFabricas($req, $res) {
+            // Filtrado por pais
             $Pais = false;
             if(isset($req->query->pais)){
                 $Pais = $req->query->pais;
             }
-            
+
             $orderBy = false;
             if(isset($req->query->orderBy)){
                 $orderBy = $req->query->orderBy;
@@ -28,12 +28,27 @@
                 $Direction = $req->query->Direction;
             }
 
-            //pido las fabricas a la db
-            $fabricas = $this->model->getFabricas($Pais, $orderBy, $Direction);
+            $pagina = false;
+            if(isset($req->query->pagina)){
+                if(is_numeric($req->query->pagina)){
+                    $pagina = $req->query->pagina;
+                }
+            }
 
+            $items = false;
+            if(isset($req->query->items)){
+                if(is_numeric($req->query->items)){
+                    $items = $req->query->items;
+                }
+            }
+        
+            //pido las fabricas a la db
+            $fabricas = $this->model->getFabricas($Pais, $orderBy, $Direction, $items, $pagina);
+        
             if(!$fabricas){
                 return $this->view->response("No hay fabricas para mostrar", 404);
             }
+
             //envio las fabricas a la vista
             return $this->view->response($fabricas);
         }

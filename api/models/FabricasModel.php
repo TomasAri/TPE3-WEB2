@@ -4,7 +4,7 @@
     class FabricasModel extends Model{
 
 
-        public function getFabricas($Pais = false, $orderBy = false, $Direction = false){
+        public function getFabricas($Pais = false, $orderBy = false, $Direction = false, $items = false, $pagina = false){
             $sql = 'SELECT * FROM `fabrica`';
 
             //TPE3-WEB2/api/fabrica?pais=Alemania
@@ -38,6 +38,15 @@
                 $sql .= ' DESC';
             }
 
+            //TPE3-WEB2/api/fabrica?pais=Estados unidos&orderBy=nombre&Direction=DESC&items=2&pagina=1
+            if($items && $pagina){
+                if($items > 0 && $pagina > 0){
+                    $items = (int)$items;
+                    $pagina = (int)($pagina - 1) * $items;
+                    $sql.= " LIMIT $pagina,$items";
+                }
+            }
+
             //Ejecuto la consulta
             $query = $this->db->prepare($sql);
 
@@ -64,7 +73,7 @@
             return $fabrica;
         }
 
-        //TPE3-WEB2/api/fabrica/:id
+        //TP3-WEB2/api/fabrica/:id
         public function deleteFabrica($id){
             $sql = 'DELETE FROM fabrica WHERE id=?';
 
